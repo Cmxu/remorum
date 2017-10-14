@@ -30,6 +30,8 @@ function processAllFieldsOfTheForm(req, res) {
         //Store the data from the fields in your data store.
         //The data store could be a file or database or any other store based
         //on your application.
+	console.log("working");
+	console.log(fields);
         res.writeHead(200, {
             'content-type': 'text/plain'
         });
