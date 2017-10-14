@@ -1,15 +1,72 @@
+<script src="js/script.js"></script>
+<link rel= "stylesheet" type= "text/css" href= "css/bootstrap.css">
+<link rel= "stylesheet" type= "text/css" href= "css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" type="text/css"  href="css/style.css">
+
 <html>
-	<head>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Karla|Pragati+Narrow" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/landing.css">
-	</head>
-	<body>
-		<div id="wrapper">
-			<div id="titleDiv">Leftovers for the Hungry</div>
-			<div id="slogan">Description</div>
-			<Button onclick="window.location.href='feeder.html'">Feeder</Button>
-			<Button onclick="window.location.href='hungry.html'">Hungry</Button>
+	<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+	<!-- Nav Bar -->
+	<div id="nav">
+	  <nav class="navbar navbar-custom navbar-fixed-top">
+	    <div class="container">
+	      <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> <i class="fa fa-bars"></i> </button>
+	        <a class="navbar-brand page-scroll" href="#page-top">Still coming up with it</a> </div>
+	      
+	      <!-- Collect the nav links, forms, and other content for toggling -->
+	      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+	        <ul class="nav navbar-nav">
+	          <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+	          <li class="hidden"> <a href="#page-top"></a> </li>
+	          <li> <a class="page-scroll" href="#page-top">Home</a> </li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+	</div>
+
+	<header id="header">
+	  <div class="intro">
+	    <div class="container">
+	      <div class="row">
+	        <div class="intro-text">
+	          <h1 >Join Us</h1>
+	          <br><br>
+	          <a class = "page-scroll btn-info btn-lg" href ="#feeder">Feeder</a>
+			  <a class = "page-scroll btn-info btn-lg" href ="#hungry">Hungry</a>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</header>
+
+	<div id = "feeder" class = "content-section">
+		<div class="container">
+		  <h2>Feeder</h2>
+		  <form action="" method = "post">
+		  	<fieldset>
+			    <div class="form-group">
+			      <label for="feeder_name">Your Name:</label>
+			      <input type="feeder_name" class="form-control" id="feeder_name" placeholder="Enter Name" name="feeder_name">
+			    </div>
+			    <div class="form-group">
+			      <label for="food_type">Food Type:</label>
+			      <input type="food_type" class="form-control" id="food_type" placeholder="Enter Food Type" name="food_type">
+			    </div>
+			    <div class="form-group">
+			      <label for="feeder_location">Enter Street Address:</label>
+			      <input type="feeder_location" class="form-control" id="feeder_location" placeholder="Enter Location" name="feeder_location">
+			    </div>
+			    <input type="submit" value="Submit" />
+			<fieldset>
+		  </form>
 		</div>
+	</div>
+
+	<div id = "hungry" class = "content-section">
+
+	</div>
+
 	</body>
 </html>
