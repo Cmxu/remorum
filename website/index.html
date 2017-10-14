@@ -28,16 +28,12 @@
 
 	<header id="header">
 	  <div class="intro">
-	    <div class="container">
-	      <div class="row">
-	        <div class="intro-text">
-	          <h1 >Join Us</h1>
-	          <br><br>
-	          <a class = "page-scroll btn-info btn-lg" href ="#feeder">Feeder</a>
-			  <a class = "page-scroll btn-info btn-lg" href ="#hungry">Hungry</a>
-	        </div>
-	      </div>
-	    </div>
+        <div class="intro-text">
+          <h1 >Join Us</h1>
+          <br><br>
+          <a class = "page-scroll btn-info btn-lg" href ="#feeder">Feeder</a>
+		  <a class = "page-scroll btn-info btn-lg" href ="#hungry">Hungry</a>
+        </div>
 	  </div>
 	</header>
 
@@ -58,14 +54,39 @@
 			      <label for="feeder_location">Enter Street Address:</label>
 			      <input type="feeder_location" class="form-control" id="feeder_location" placeholder="Enter Location" name="feeder_location">
 			    </div>
-			    <input type="submit" value="Submit" />
+			    <input class="btn btn-default" type="submit" value="Submit" />
 			<fieldset>
 		  </form>
 		</div>
 	</div>
 
-	<div id = "hungry" class = "content-section">
+	<div class = "fixed-size">
+		<svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+	    	<path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0" style="stroke: none; fill:#e3e6ea;"></path>
+	  	</svg>
+  	</div>
 
+	<div id = "hungry" class = "content-section">
+		<div id="wrapper">
+			<div class="container">
+			  <h2>Hungry</h2>
+			  <form action="none">
+			    <div class="form-group">
+			      <label for="hungry_name">Your Name:</label>
+			      <input type="fhungry_name" class="form-control" id="hungry_name" placeholder="Enter Name" name="hungry_name">
+			    </div>
+			    <div class="form-group">
+			      <label for="hungry_location">Enter Street Address:</label>
+			      <input type="feeder_location" class="form-control" id="feeder_location" placeholder="Enter Location" name="feeder_location">
+			    </div>
+			    <div class="form-group">
+			      <label for="hungry_phone">Enter Phone Number:</label>
+			      <input type="hungry_phone" class="form-control" id="hungry_phone" placeholder="Enter Phone Number" name="hungry_phone">
+			    </div>
+			    <button type="submit" class="btn btn-default">Submit</button>
+			  </form>
+			</div>
+		</div>
 	</div>
 
 	</body>
