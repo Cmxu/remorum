@@ -113,7 +113,7 @@
           markers[i].addListener('click', function() {
             function myFunction() {
               var text;
-              switch(vitality){
+              switch(markers[i].title){
                 case -1:
                   text = "This is a homeless shelter. Are you sure you want to deliver here?";
                   break;
@@ -132,7 +132,7 @@
               console.log(text);
               var test = confirm(text);
               if(test){
-                sendFound(marker.label);
+                sendFound(markers[i].label);
               }
 
             }
