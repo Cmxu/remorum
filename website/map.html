@@ -43,6 +43,12 @@
       function myFunction(e) {
               var text;
               console.log(e.latLng);
+              var i;
+              for(var j = 0; j < markers.length; j++){
+                if(e.latLng == markers[i].latLng){
+                    var i = j;
+                }
+              }
               switch(titles[i]){
                 case -1:
                   text = "This is a homeless shelter. Are you sure you want to deliver here?";
@@ -140,7 +146,7 @@
             center: latLng,
             radius: 400
           });
-          markers[i].idid = i;
+          markers[i].latLng = latLng;
           /*markers[i] = new google.maps.Marker({
             title: locs[i].vitality,
             label: locs[i].num,
