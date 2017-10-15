@@ -14,6 +14,10 @@ const authToken = '647002f3e302fd8cef8a000ed18baf97';
 
 var options = {
   provider: 'google',
+
+  httpAdapter: 'https', // Default
+  apiKey: 'AIzaSyDIFQc6jdsvz5FDn42cZxy2GFH3C29Jwjk', // for Mapquest, OpenCage, Google Premier
+  formatter: null 
 };
 
 app.get('/map', (request, response) => {
@@ -178,7 +182,8 @@ app.post('/found', (req, res) => {
 });
 
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://localhost:27017/node-demo");
-app.use(bodyParser()); 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 var nameSchema = new mongoose.Schema({
  firstName: String,
@@ -196,11 +201,12 @@ app.get('/feeder', function(req, res){
 
 //Submission for feeder form
 app.post('/feeder', function(req, res){
-    console.log('POST /');
+    console.log('POST FOR FEEDER /');
     console.dir(req.body);
     var myData = new User(req.body);
+    console.log("LOG OF REQ");
+    console.log(req.body);
     var parsedData = filterLocation(req.body);
-    console.log(parsedData);
     //makeJSON(parsedData);
  	myData.save()
  		.then(item => {
@@ -222,12 +228,20 @@ function filterLocation(data){
     };
     obj.table.push(data);
     var json = JSON.stringify(obj);
+
     fs.writeFile ("input.json", JSON.stringify(obj), function(err) {
         if (err) throw err;
         console.log('complete');
         }
     );
-      })
+    /*
+    fs.appendFile('input.json', JSON.stringify(obj), function (err) {
+    if (err) throw err;
+  console.log('Saved!');
+    });
+    */
+    
+    })
       .catch(function(err) {
         console.log(err);
       });
