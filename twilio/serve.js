@@ -63,11 +63,24 @@ app.post('/sms', (req, res) => {
 						current_person.step = 2;
 						update(current_person);
 					} else {
-						response("Great! We got your info, we'll update you when we find a donor!");
-						current_person.step = 0;
-						current_person.finished = true;
+						response("How hungry are you from 1 to 3?");
+						current_person.step = 4;
 						update(current_person);
 					}
+				}else if(current_person.step == 4){
+					response("Great! We got your info, we'll update you when we find a donor!");
+					if(inc == '1'){
+						current_person.vitality = 1;
+					} else if(inc == '2'){
+						current_person.vitality = 2;
+					} else if(inc == '3'){
+						current_person.vitality = 3;
+					} else {
+						current_person.vitality = 1;
+					}
+					current_person.step = 0;
+					current_person.finished = true;
+					update(current_person);
 				}else {
 					response("Something bad happened");				
 				}

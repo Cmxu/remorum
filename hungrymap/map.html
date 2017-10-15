@@ -34,6 +34,7 @@
           center: {lat: init_lat, lng: init_lng},
           zoom: init_zoom,
           disableDefaultUI: true,
+          disableDoubleClickZoom: true,
           scrollwheel: false,
           styles: [{"elementType": "geometry","stylers": [{"color": "#98dbc6"}]},
                   {"elementType": "labels","stylers": [{"visibility": "off"}]},
@@ -91,17 +92,17 @@
               default:
                 color = '#008000';
           }
-          console.log(color);
+          //console.log(color);
           var marker = new google.maps.Circle({
             label: locs[i].num,
             strokeColor: color,
             strokeOpacity: 1.0,
             strokeWeight: 2,
             fillColor: color,
-            fillOpacity: 0.8,
+            fillOpacity: 0.9,
             map: map,
             center: latLng,
-            radius: 300
+            radius: 400
           });
           /*var marker = new google.maps.Marker({
             position: latLng,
