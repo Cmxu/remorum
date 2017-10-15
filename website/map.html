@@ -146,7 +146,7 @@
             position: latLng,
             map: map
           });*/
-          markers[i].addListener('click', function() {
+          markers[i].addListener('click', function(i) {
             myFunction(i);
           });
           /*var marker = new google.maps.Marker({
