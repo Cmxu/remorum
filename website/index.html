@@ -47,7 +47,7 @@
 	<div id = "feeder" class = "content-section">
 		<div class="container">
 		  <h2>Feeder</h2>
-		  <form action="/login" method = "post">
+		  <form action="/feeder" method = "post">
 		  	<fieldset>
 			    <div class="form-group">
 			      <label for="feeder_name">Your Name:</label>
@@ -56,6 +56,10 @@
 			    <div class="form-group">
 			      <label for="food_type">Food Type:</label>
 			      <input type="food_type" class="form-control" id="food_type" placeholder="Enter Food Type" name="food_type">
+			    </div>
+			    <div class="form-group">
+			      <label for="feeder_phone">Food Type:</label>
+			      <input type="feeder_phone" class="form-control" id="feeder_phone" placeholder="Enter Phone Number" name="feeder_phone">
 			    </div>
 			    <div class="form-group">
 			      <label for="feeder_location">Enter Street Address:</label>
@@ -77,10 +81,10 @@
 		<div id="wrapper">
 			<div class="container">
 			  <h2>Hungry</h2>
-			  <form action="none">
+			  <form action="/hungry">
 			    <div class="form-group">
 			      <label for="hungry_name">Your Name:</label>
-			      <input type="fhungry_name" class="form-control" id="hungry_name" placeholder="Enter Name" name="hungry_name">
+			      <input type="hungry_name" class="form-control" id="hungry_name" placeholder="Enter Name" name="hungry_name">
 			    </div>
 			    <div class="form-group">
 			      <label for="hungry_location">Enter Street Address:</label>
@@ -90,7 +94,7 @@
 			      <label for="hungry_phone">Enter Phone Number:</label>
 			      <input type="hungry_phone" class="form-control" id="hungry_phone" placeholder="Enter Phone Number" name="hungry_phone">
 			    </div>
-			    <button type="submit" class="btn btn-default">Submit</button>
+			    <input type="submit" value="send" />
 			  </form>
 			</div>
 		</div>
