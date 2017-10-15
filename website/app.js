@@ -33,7 +33,7 @@ app.get('/map', (request, response) => {
 
         results = "[";
         for(var i = 0; i < result.length; i++){
-          results += "{'long':" + result[i].long + ",'lat':" + result[i].lat + ",'vitality':" + result[i].vitality + ",'num':" + result[i]._id + "}";
+          results += "{'long':" + result[i].long + ",'lat':" + result[i].lat + ",'vitality':" + result[i].vitality + ",'num':" + (result[i]._id + '') + "}";
           if(i != result.length -1){
             results += ",";
           }
