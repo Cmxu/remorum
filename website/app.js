@@ -110,7 +110,7 @@ app.post('/sms', (req, res) => {
                         current_person.step = 3;
                         current_person.lat = json.results[0].geometry.location.lat;
                         update(current_person);
-                        const imgadd = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location=' + json.results[0].geometry.location.lat + ',' + json.results[0].geometry.location.lng + '&heading=151.78&pitch=-0.76&key=AIzaSyAGlEleGphQnEpoSGOds8owoeltH89-55E'
+                        const imgadd = 'https://maps.googleapis.com/maps/api/streetview?size=300x150&location=' + json.results[0].geometry.location.lat + ',' + json.results[0].geometry.location.lng + '&heading=151.78&pitch=-0.76&key=AIzaSyAGlEleGphQnEpoSGOds8owoeltH89-55E'
                         multiresponse("Does this look like the correct address: " + json.results[0].formatted_address + "?", imgadd);
                     });
                 }else if(current_person.step == 3){
