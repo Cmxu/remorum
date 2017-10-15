@@ -40,7 +40,32 @@
       var markers = [];
       var titles = [];
       var labels = [];
-      var functions = [];
+      function myFunction() {
+              var text;
+              var i = marker.id;
+              switch(titles[i]){
+                case -1:
+                  text = "This is a homeless shelter. Are you sure you want to deliver here?";
+                  break;
+                case 1:
+                  text = "This person is hungry. Are you sure you want to deliver here?";
+                  break;
+                case 2:
+                  text = "This is very hungry. Are you sure you want to deliver here?";
+                  break;
+                case 2:
+                  text = "This is in vital need of food. Are you sure you want to deliver here?";
+                  break;
+                default:
+                  text = "Something went wrong";
+              }
+              console.log(i);
+              var test = confirm(text);
+              if(test){
+                sendFound(labels[i]);
+              }
+
+            }
       /**TESTING**/
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -115,6 +140,7 @@
             center: latLng,
             radius: 400
           });
+          markers[i].id = i;
           /*markers[i] = new google.maps.Marker({
             title: locs[i].vitality,
             label: locs[i].num,
@@ -122,32 +148,8 @@
             position: latLng,
             map: map
           });*/
-          markers[i].addListener('click', function(i) {
-            functions[i] = 
-            function myFunction(j = i) {
-                    var text;
-                    switch(titles[j]){
-                      case -1:
-                        text = "This is a homeless shelter. Are you sure you want to deliver here?";
-                        break;
-                      case 1:
-                        text = "This person is hungry. Are you sure you want to deliver here?";
-                        break;
-                      case 2:
-                        text = "This is very hungry. Are you sure you want to deliver here?";
-                        break;
-                      case 2:
-                        text = "This is in vital need of food. Are you sure you want to deliver here?";
-                        break;
-                      default:
-                        text = "Something went wrong";
-                    }
-                    var test = confirm(text);
-                    if(test){
-                      sendFound(labels[j]);
-                    }
-
-                  }
+          markers[i].addListener('click', function() {
+            myFunction();
           });
           /*var marker = new google.maps.Marker({
             position: latLng,
