@@ -64,6 +64,14 @@ app.post('/sms', (req, res) => {
 					res.writeHead(200, {'Content-Type': 'text/xml'});
 					res.end(twiml.toString());
 				}
+				function multiresponse(a, b){
+					twiml.message().body(a);
+					twiml.message().media(b);
+					//twiml.message().media = 'https://farm8.staticflickr.com/7090/6941316406_80b4d6d50e_z_d.jpg';
+					console.log("Sending Image: " + b);
+					res.writeHead(200, {'Content-Type': 'text/xml'});
+					res.end(twiml.toString());
+				}
 				function update(updated){
 					db.collection("hungry").updateOne({'_id': num}, updated, function(err, result) {
 						if (err) throw err;
@@ -89,7 +97,8 @@ app.post('/sms', (req, res) => {
 						current_person.step = 3;
 						current_person.lat = json.results[0].geometry.location.lat;
 						update(current_person);
-						response("Does this look like the correct address: " + json.results[0].formatted_address + "?");
+						const imgadd = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location=' + json.results[0].geometry.location.lat + ',' + json.results[0].geometry.location.lng + '&heading=151.78&pitch=-0.76&key=AIzaSyAGlEleGphQnEpoSGOds8owoeltH89-55E'
+						multiresponse("Does this look like the correct address: " + json.results[0].formatted_address + "?", imgadd);
 					});
 				}else if(current_person.step == 3){
 					if(inc == 'No'){
