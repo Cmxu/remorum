@@ -156,7 +156,7 @@ app.post('/sms', (req, res) => {
 app.post('/found', (req, res) => {
     const mongourl = 'mongodb://localhost:27017/node-demo';
     //console.log(req);
-    console.log(req.body);
+    console.log(req);
     var inc = req.body.num;
     const client = require('twilio')(accountSid, authToken);
     console.log(inc);
