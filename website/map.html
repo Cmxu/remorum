@@ -109,7 +109,8 @@
             map: map,
             center: latLng,
             radius: 400
-          }).addListener('click', function() {
+          });
+          markers[i].addListener('click', function() {
             function myFunction() {
               var text;
               switch(vitality){
