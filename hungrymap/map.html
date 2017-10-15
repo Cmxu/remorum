@@ -59,12 +59,55 @@
                   {"featureType": "water","elementType": "geometry.fill","stylers": [{"color": "#4cb5f5"}]},
                   {"featureType": "water","elementType": "labels.text.fill","stylers": [{"color": "#9e9e9e"}]}]
         });
+        map.data.setStyle(function(feature) {
+          var vitality = feature.getProperty('vit');
+          return {
+            icon: getCircle(vitality)
+          };
+        });
+        function getCircle(vitality) {
+          return {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: 'red',
+            fillOpacity: .2,
+            scale: Math.pow(2, 5) / 2,
+            strokeColor: 'white',
+            strokeWeight: .5
+          };
+        }
         for(var i = 0; i < locs.length; i++){
           var latLng = new google.maps.LatLng(locs[i].lat,locs[i].long);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
+          var color;
+          switch(locs[i].vitality){
+              case 1:
+                color = '#FFFF00';
+                break;
+              case 2:
+                color = '#FFA500';
+                break;
+              case 3:
+                color = '#FF0000';
+                break;
+              default:
+                color = '#008000';
+          }
+          console.log(color);
+          var marker = new google.maps.Circle({
+            label: locs[i].num,
+            strokeColor: color,
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+            fillColor: color,
+            fillOpacity: 0.8,
+            map: map,
+            center: latLng,
+            radius: 300
           });
+          /*var marker = new google.maps.Marker({
+            position: latLng,
+            //vit: locs[i].vitality,
+            map: map
+          });*/
         }
       }
     </script>
