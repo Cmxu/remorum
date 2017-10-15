@@ -211,17 +211,7 @@ app.post('/feeder', function(req, res){
 });
 
 function filterLocation(data){
-    var location = data['feeder_location'];
-    var geocoder = NodeGeocoder(options);
-    geocoder.geocode(location)
-      .then(function(res) {
-        data['lat'] = res[0]['latitude'];
-        data['lng'] = res[0]['longitude'];
-        var obj = {
-       table: []
-    };
-    obj.table.push(data);
-    var json = JSON.stringify(obj);
+    
     fs.writeFile ("input.json", "data = " + JSON.stringify(data), function(err) {
         if (err) throw err;
         console.log('complete');
