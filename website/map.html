@@ -74,28 +74,14 @@
                   {"featureType": "water","elementType": "geometry.fill","stylers": [{"color": "#4cb5f5"}]},
                   {"featureType": "water","elementType": "labels.text.fill","stylers": [{"color": "#9e9e9e"}]}]
         });
-        var myData = JSON.parse(table);
+        var latLng = new google.maps.LatLng(inputData.table[0].lat,inputData.table[0].lng);
+        var marker = new google.maps.Marker();
+        marker.setPosition(new google.maps.LatLng(inputData.table[0].lat, inputData.table[0].lng));
+        marker.setMap(map);
         var feeder = new google.maps.Marker({
-            var latLng = new google.maps.LatLng(myData.lat,myData.lng);
             position: latLng,
             map: map
           });
-        map.data.setStyle(function(feature) {
-          var vitality = feature.getProperty('vit');
-          return {
-            icon: getCircle(vitality)
-          };
-        });
-        function getCircle(vitality) {
-          return {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillColor: 'red',
-            fillOpacity: .2,
-            scale: Math.pow(2, 5) / 2,
-            strokeColor: 'white',
-            strokeWeight: .5
-          };
-        }
         for(var i = 0; i < locs.length; i++){
           var latLng = new google.maps.LatLng(locs[i].lat,locs[i].long);
           var color;

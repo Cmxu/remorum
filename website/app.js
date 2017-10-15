@@ -210,7 +210,7 @@ app.post('/feeder', function(req, res){
  	myData.save()
  		.then(item => {
  		console.log("Submitted data to Mongo success");
- 		res.status(200).redirect("map.html");
+ 		res.status(200).redirect("/map");
  	});
     
 });
@@ -233,7 +233,7 @@ function filterLocation(data){
         console.log('complete');
         }
     );
-    
+    console.log(json);
     fs.appendFile('input.json', JSON.stringify(obj), function (err) {
     if (err) throw err;
   console.log('Saved!');
@@ -271,7 +271,7 @@ app.use(express.static(__dirname + '/'));
 
 
 
-//port = 1185;
-port = 1337;
+port = 1185;
+//port = 1337;
 app.listen(port);
 console.log('Listening at http://localhost:' + port)
