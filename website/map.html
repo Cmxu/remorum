@@ -26,7 +26,7 @@
         if(num.charAt(0) != 'h'){
           var num = {'num':num};
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', 'http://localhost:1185/found', true);
+          xhr.open('POST', 'http://34.214.100.137:1185/found', true);
           xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
           xhr.send(JSON.stringify(num));
 
