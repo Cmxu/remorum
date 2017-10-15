@@ -13,11 +13,11 @@ var server = http.createServer(function (req, res) {
 });
 
 function displayForm(res) {
-    fs.readFile('feeder.html', function (err, data) {
+    fs.readFile('index.html', function (err, data) {
         res.writeHead(200, {
             'Content-Type': 'text/html',
                 'Content-Length': data.length
-        });
+    });
         res.write(data);
         res.end();
     });
@@ -30,16 +30,23 @@ function processAllFieldsOfTheForm(req, res) {
         //Store the data from the fields in your data store.
         //The data store could be a file or database or any other store based
         //on your application.
-	console.log("working");
 	console.log(fields);
         res.writeHead(200, {
             'content-type': 'text/plain'
         });
-        res.write('received the data:\n\n');
-        res.end(util.inspect({
+        //res.write('received the data:\n\n');
+        
+	fs.readFile('submitted.html', function (err, data) {
+        res.writeHead(200, {
+            'Content-Type': 'text/html',
+                'Content-Length': data.length
+   		});
+	res.write(data);
+	res.end(util.inspect({
             fields: fields,
             files: files
         }));
+	});
     });
 }
 
