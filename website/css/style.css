@@ -187,6 +187,46 @@ a:hover, a:visited, a:link, a:active
     transition-delay: initial;
 }
 
+input{
+	margin: 2% auto;
+	display: inline-block;
+	position: relative;
+	padding: 1% 2%;
+	top: 0;
+	font-size: 100%;
+	font-style: normal;
+ 	font-variant: normal;
+ 	font-weight: 400;
+	border-radius: 5px;
+	border: 2px solid white;
+	color: white;
+}
+
+#input-feeder{
+	background-color: #5bc8ac; 
+}
+
+#input-feeder:hover{
+	background-color: white; 
+}
+
+#input-hungry{
+	background-color: #98dbc6; 
+}
+
+#input-hungry:hover{
+	background-color: white; 
+}
+
+input:hover {
+	background-color: white;
+	color: #3B3B3B;
+    transition: all 300ms ease;
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+    transition-delay: initial;
+}
 
 #map {
     height: 100%;
