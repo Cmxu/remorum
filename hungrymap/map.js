@@ -1,10 +1,12 @@
 const MongoClient = require('mongodb').MongoClient
 const mongourl = 'mongodb://localhost:27017/demo';
+const express = require('express');
 
 const http = require('http');
-const fs = require("fs");
+const fs = require('fs');
+const app = express();
  
-http.createServer(function(request, response) {
+app.get('/map', (request, response) => {
   fs.readFile("map.html", function(err, data){
     MongoClient.connect(mongourl, function(err, db) {
       if (err) throw err;
@@ -33,4 +35,8 @@ http.createServer(function(request, response) {
       });
     });
   });
-}).listen(3000);
+});
+
+http.createServer(app).listen(1337, () => {
+  console.log('Express server listening on port 1337');
+});

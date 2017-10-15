@@ -101,6 +101,32 @@ app.post('/sms', (req, res) => {
 	});
 });
 
+app.post('/found', (req, res) => {
+	const mongourl = 'mongodb://localhost:27017/demo';
+	var inc = req.num;
+	const client = require('twilio')(accountSid, authToken);
+
+	client.messages
+	  .create({
+	    to: inc,
+	    from: '+13122486437',
+	    body: 'Testing123',
+	  })
+	  .then((message) => console.log(message.sid));
+	MongoClient.connect(mongourl, function(err, db) {
+		if (err) throw err;
+		db.collection("hungry").find({'_id': inc}).toArray(function(err, result) {
+				if (err) throw err;
+				current_person = result[0];
+				current_person.finished = false;
+				db.collection("hungry").updateOne({'_id': num}, current_person, function(err, result) {
+					if (err) throw err;
+					db.close();
+				});
+		});
+	});
+});
+
 http.createServer(app).listen(1337, () => {
 	console.log('Express server listening on port 1337');
 });
