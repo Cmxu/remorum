@@ -22,9 +22,9 @@
     <div id="map"></div>
     <script src="input.json" type="text/javascript"></script>
     <script>
-      function sendFound(num){
+      function sendFound(num1){
         if(num.charAt(0) != 'h'){
-          var num = {'num':num};
+          var num = {'num':num1};
           var xhr = new XMLHttpRequest();
           xhr.open('POST', 'http://34.214.100.137:1185/found', true);
           xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
