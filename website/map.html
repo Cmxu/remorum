@@ -23,15 +23,17 @@
     <script src="input.json" type="text/javascript"></script>
     <script>
       function sendFound(num){
-        var num = {'num':num};
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://bb38d974.ngrok.io/found', true);
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-        xhr.send(JSON.stringify(num));
+        if(num.charAt(0) != 'h'){
+          var num = {'num':num};
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', 'http://localhost:1185/found', true);
+          xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+          xhr.send(JSON.stringify(num));
 
-        xhr.onloadend = function () {
-          // done
-        };
+          xhr.onloadend = function () {
+            // done
+          };
+        }
       }
       var map;
       var init_zoom = 11;
