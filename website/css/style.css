@@ -10,6 +10,17 @@ body, html {
     display:inline-block;
 }
 
+.form-control-file{
+	text-align: left;
+	background-color: #5bc8ac;
+	border-color: #5bc8ac;
+	color:white;
+}
+.form-control-file:hover{
+	background-color: #5bc8ac;
+	color:white;
+}
+
 h1 {
 	font-weight: 700;
 }
