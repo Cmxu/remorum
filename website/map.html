@@ -98,7 +98,7 @@
                 color = '#008000';
           }
           //console.log(color);
-          markers[i] = new google.maps.Circle({
+          /*markers[i] = new google.maps.Circle({
             title: locs[i].vitality,
             label: locs[i].num,
             strokeColor: color,
@@ -109,6 +109,13 @@
             map: map,
             center: latLng,
             radius: 400
+          });*/
+          markers[i] = new google.maps.Marker({
+            title: locs[i].vitality,
+            label: locs[i].num,
+            color: color,
+            position: latLng,
+            map: map
           });
           markers[i].addListener('click', function() {
             function myFunction() {
