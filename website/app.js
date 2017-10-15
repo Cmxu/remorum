@@ -1,54 +1,65 @@
-var http = require('http');
+var express = require('express');
+var bodyParser = require('body-parser');
 var fs = require('fs');
-var formidable = require("formidable");
-var util = require('util');
+var app = express();
+const url = require('url');    
+var mongoose = require("mongoose");
+var MongoClient = require('mongodb').MongoClient;
 
-var server = http.createServer(function (req, res) {
-    if (req.method.toLowerCase() == 'get') {
-        displayForm(res);
-    } else if (req.method.toLowerCase() == 'post') {
-        processAllFieldsOfTheForm(req, res);
-    }
+mongoose.Promise = global.Promise;mongoose.connect("mongodb://localhost:27017/node-demo");
+app.use(bodyParser()); 
 
+var nameSchema = new mongoose.Schema({
+ firstName: String,
+ phoneNumber: String
+});
+var User = mongoose.model("User", nameSchema);
+
+//
+app.get('/feeder', function(req, res){
+    console.log('GET /')
+    var html = fs.readFileSync('index.html');
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(html);
 });
 
-function displayForm(res) {
-    fs.readFile('index.html', function (err, data) {
-        res.writeHead(200, {
-            'Content-Type': 'text/html',
-                'Content-Length': data.length
-    });
-        res.write(data);
-        res.end();
-    });
-}
+//Submission for feeder form
+app.post('/feeder', function(req, res){
+    console.log('POST /');
+    console.dir(req.body);
+    var myData = new User(req.body);
+ 	myData.save()
+ 		.then(item => {
+ 		console.log("Submitted data to Mongo success");
+ 		res.status(200).redirect("submitted.html");
+ 	});
+    
+});
 
-function processAllFieldsOfTheForm(req, res) {
-    var form = new formidable.IncomingForm();
+app.get('/hungry', function(req, res){
+    console.log('GET /')
+    var html = fs.readFileSync('index.html');
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(html);
+});
 
-    form.parse(req, function (err, fields, files) {
-        //Store the data from the fields in your data store.
-        //The data store could be a file or database or any other store based
-        //on your application.
-	console.log(fields);
-        res.writeHead(200, {
-            'content-type': 'text/plain'
-        });
-        //res.write('received the data:\n\n');
-        
-	fs.readFile('submitted.html', function (err, data) {
-        res.writeHead(200, {
-            'Content-Type': 'text/html',
-                'Content-Length': data.length
-   		});
-	res.write(data);
-	res.end(util.inspect({
-            fields: fields,
-            files: files
-        }));
-	});
-    });
-}
+//Submission for hungry form
+app.post('/hungry', function(req, res){
+    console.log('POST /');
+    console.dir(req.body);
+    var myData = new User(req.body);
+ 	myData.save()
+ 		.then(item => {
+ 		console.log("Submitted data to Mongo success");
+ 		res.status(200).redirect("submitted.html");
+ 	});
+    
+});
 
-server.listen(1185);
-console.log("server listening on 1185");
+app.use(express.static(__dirname + '/'));
+
+
+
+port = 8888;
+app.listen(port);
+console.log('Listening at http://localhost:' + port)
