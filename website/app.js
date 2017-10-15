@@ -156,6 +156,7 @@ app.post('/sms', (req, res) => {
 app.post('/found', (req, res) => {
     const mongourl = 'mongodb://localhost:27017/node-demo';
     //console.log(req);
+    cosole.log(req.body);
     var inc = req.body.num;
     const client = require('twilio')(accountSid, authToken);
     console.log(inc);
@@ -163,7 +164,7 @@ app.post('/found', (req, res) => {
       .create({
         to: inc,
         from: '+13122486437',
-        body: 'Testing123',
+        body: "You're food is on the way! Sit still!",
       })
       .then((message) => console.log(message.sid));
     MongoClient.connect(mongourl, function(err, db) {
