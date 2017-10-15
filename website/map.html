@@ -44,14 +44,11 @@
       var lng = [];
       function myFunction(e) {
               var text;
-              console.log(e);
-              console.log(e.lat());
-              console.log(e.lng());
               var i = 0;
               var dis = 1000000;
               for(var j = 0; j < markers.length; j++){
-                if(Math.abs(e.lat - lat[i]) + Math.abs(e.lng - lng[i]) < dis){
-                  dis = Math.abs(e.lat - lat[i]) + Math.abs(e.lng - lng[i]);
+                if(Math.abs(e.lat() - lat[i]) + Math.abs(e.lng() - lng[i]) < dis){
+                  dis = Math.abs(e.lat() - lat[i]) + Math.abs(e.lng() - lng[i]);
                   var i = j;
                 }
               }
