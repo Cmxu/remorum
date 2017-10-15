@@ -30,7 +30,7 @@ app.post('/login', function(req, res){
     var myData = new User(req.body);
  	myData.save()
  		.then(item => {
- 		res.write();
+ 		console.log("Submitted data to Mongo success");
  		res.status(200).redirect("submitted.html");
  	});
     
