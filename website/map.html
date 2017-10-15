@@ -40,15 +40,16 @@
       var markers = [];
       var titles = [];
       var labels = [];
-      var latLng = [];
+      var lat = [];
+      var lng = [];
       function myFunction(e) {
               var text;
               //console.log(e.latLng);
               var i = 0;
               var dis = 1000000;
               for(var j = 0; j < markers.length; j++){
-                if(Math.abs(e.latLng.lat - latLng[i].lat) + Math.abs(e.latLng.lng - latLng[i].lng) < dis){
-                  dis = Math.abs(e.latLng.lat - latLng[i].lat) + Math.abs(e.latLng.lng - latLng[i].lng);
+                if(Math.abs(e.latLng.lat - lat[i]) + Math.abs(e.latLng.lng - lng[i]) < dis){
+                  dis = Math.abs(e.latLng.lat - lat[i]) + Math.abs(e.latLng.lng - lng[i]);
                   var i = j;
                 }
               }
@@ -137,7 +138,8 @@
           //console.log(color);
           titles[i] = locs[i].vitality;
           labels[i] = locs[i].num;
-          latLng[i] = latLng;
+          lat[i] = locs[i].lat;
+          lng[i] = locs[i].lng;
           markers[i] = new google.maps.Circle({
             title: locs[i].vitality,
             label: locs[i].num,
