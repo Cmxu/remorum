@@ -22,13 +22,8 @@
     <div id="map"></div>
     <script src="input.json" type="text/javascript"></script>
     <script>
-      document.body.onkeyup = function(e){
-        if(e.keyCode == 32){
-            sendFound();
-        }
-      }
-      function sendFound(){
-        var num = {'num':'+19784279392'};
+      function sendFound(num){
+        var num = {'num':num};
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'http://bb38d974.ngrok.io/found', true);
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
@@ -103,6 +98,7 @@
           }
           //console.log(color);
           var marker = new google.maps.Circle({
+            title: locs[i].vitality;
             label: locs[i].num,
             strokeColor: color,
             strokeOpacity: 1.0,
@@ -112,6 +108,32 @@
             map: map,
             center: latLng,
             radius: 400
+          });
+          marker.addListener('click', function() {
+            function myFunction() {
+              var text;
+              switch(vitality){
+                case -1:
+                  text = "This is a homeless shelter. Are you sure you want to deliver here?";
+                  break;
+                case 1:
+                  text = "This person is hungry. Are you sure you want to deliver here?";
+                  break;
+                case 2:
+                  text = "This is very hungry. Are you sure you want to deliver here?";
+                  break;
+                case 2:
+                  text = "This is in vital need of food. Are you sure you want to deliver here?";
+                  break;
+                default:
+                  text = "Something went wrong";
+              }
+              var test = confirm(text);
+              if(test){
+                sendFound(marker.label);
+              }
+
+            }
           });
           /*var marker = new google.maps.Marker({
             position: latLng,
