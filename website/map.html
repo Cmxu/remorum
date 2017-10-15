@@ -40,9 +40,9 @@
       var markers = [];
       var titles = [];
       var labels = [];
-      function myFunction() {
+      function myFunction(marker) {
               var text;
-              var i = arguments.callee.caller.id;
+              var i = marker.idid;
               switch(titles[i]){
                 case -1:
                   text = "This is a homeless shelter. Are you sure you want to deliver here?";
@@ -140,7 +140,7 @@
             center: latLng,
             radius: 400
           });
-          markers[i].id = i;
+          markers[i].idid = i;
           /*markers[i] = new google.maps.Marker({
             title: locs[i].vitality,
             label: locs[i].num,
@@ -148,9 +148,12 @@
             position: latLng,
             map: map
           });*/
-          markers[i].addListener('click', function() {
-            myFunction();
+          google.maps.event.addListener(marker, "click", function (e) {
+              myFunction(marker);
           });
+          /*markers[i].addListener('click', function() {
+            myFunction();
+          });*/
           /*var marker = new google.maps.Marker({
             position: latLng,
             //vit: locs[i].vitality,
