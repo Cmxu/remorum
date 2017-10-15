@@ -40,12 +40,13 @@
       var markers = [];
       var titles = [];
       var labels = [];
+      var latLng = [];
       function myFunction(e) {
               var text;
               console.log(e.latLng);
               var i;
               for(var j = 0; j < markers.length; j++){
-                if(e.latLng == markers[i].latLng){
+                if(e.latLng == latLng[i]){
                     var i = j;
                 }
               }
@@ -134,6 +135,7 @@
           //console.log(color);
           titles[i] = locs[i].vitality;
           labels[i] = locs[i].num;
+          latLng[i] = latLng;
           markers[i] = new google.maps.Circle({
             title: locs[i].vitality,
             label: locs[i].num,
@@ -146,7 +148,6 @@
             center: latLng,
             radius: 400
           });
-          markers[i].latLng = latLng;
           /*markers[i] = new google.maps.Marker({
             title: locs[i].vitality,
             label: locs[i].num,
