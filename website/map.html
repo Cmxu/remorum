@@ -148,8 +148,8 @@
             position: latLng,
             map: map
           });*/
-          google.maps.event.addListener(marker, "click", function (e) {
-              myFunction(marker);
+          google.maps.event.addListener(markers[i], "click", function (e) {
+              myFunction(markers[i]);
           });
           /*markers[i].addListener('click', function() {
             myFunction();
