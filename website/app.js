@@ -20,6 +20,10 @@ var options = {
   formatter: null 
 };
 
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 app.get('/map', (request, response) => {
   fs.readFile("map.html", function(err, data){
     MongoClient.connect(mongourl, function(err, db) {
@@ -182,8 +186,6 @@ app.post('/found', (req, res) => {
 });
 
 mongoose.Promise = global.Promise;mongoose.connect("mongodb://localhost:27017/node-demo");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 var nameSchema = new mongoose.Schema({
  firstName: String,
