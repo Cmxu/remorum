@@ -1,22 +1,25 @@
-$(function() {
-  $('a.page-scroll', this).each(function(e) {
-        var url = $(this).attr('href').replace(/^\s/, '').replace(/\s$/, '');
-        var parts = url.split("#", 2);
-        var anchors = $("#" + parts[1] + ", a[name='" + parts[1] + "']");
-        if (anchors.length > 0) {
-            $(this).click(function(evt) {
-                evt.preventDefault();
-                $('html, body')
-                .animate({
-                    scrollTop: $(anchors.get(0)).offset().top
-                }, {
-                    duration: 1500,
-                    specialEasing: {
-                        scrollTop: 'easeOutQuint'
-                    }
-                });
-            });
-        }
-    });
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
 
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
 });
+
