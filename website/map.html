@@ -22,25 +22,11 @@
     <div id="map"></div>
     <script src="input.json" type="text/javascript"></script>
     <script>
-      function sendFound2(num1){
-        var num = {'num':'+19784279392'};
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/found', true);
-        xhr.setRequestHeader('Content-Type', 'text/xml');
-        var xml = "<xml><query><author>" + num1 + "</author></query></xml>";
-        xhr.send(xml);
-        //xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-        //xhr.send(JSON.stringify(num));
-
-        xhr.onloadend = function () {
-          // done
-        };
-      }
       function sendFound(num1){
         if(num1.charAt(0) != 'h'){
           var num = {'num':num1};
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', '/found', true);
+          xhr.open('POST', 'http://localhost:1185/found', true);
           xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
           xhr.send(JSON.stringify(num));
 
@@ -87,8 +73,8 @@
               console.log(i);
               var test = confirm(text);
               if(test){
-                //sendFound(labels[i]);
-                sendFound2(labels[i]);
+                sendFound(labels[i]);
+                //sendFound2(labels[i]);
               }
 
             }
