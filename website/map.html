@@ -45,13 +45,13 @@
       function myFunction(e) {
               var text;
               console.log(e);
-              console.log(e.latLng.lat);
-              console.log(e.latLng.lng);
+              console.log(e.lat);
+              console.log(e.lng);
               var i = 0;
               var dis = 1000000;
               for(var j = 0; j < markers.length; j++){
-                if(Math.abs(e.latLng.lat - lat[i]) + Math.abs(e.latLng.lng - lng[i]) < dis){
-                  dis = Math.abs(e.latLng.lat - lat[i]) + Math.abs(e.latLng.lng - lng[i]);
+                if(Math.abs(e.lat - lat[i]) + Math.abs(e.lng - lng[i]) < dis){
+                  dis = Math.abs(e.lat - lat[i]) + Math.abs(e.lng - lng[i]);
                   var i = j;
                 }
               }
@@ -162,7 +162,7 @@
             map: map
           });*/
           google.maps.event.addListener(markers[i], "click", function (e) {
-              myFunction(e);
+              myFunction(e.latLng);
           });
           /*markers[i].addListener('click', function() {
             myFunction();
