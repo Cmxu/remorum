@@ -21,7 +21,7 @@ app.post('/sms', (req, res) => {
 	var num = req.body.From;
 	MongoClient.connect(mongourl, function(err, db) {
 		if (err) throw err;
-		function stupid(){
+		function main_function(){
 			db.collection("hungry").find({'_id': num}).toArray(function(err, result) {
 				if (err) throw err;
 				current_person = result[0];
@@ -79,10 +79,10 @@ app.post('/sms', (req, res) => {
 				var new_hungry = {_id: num, finished:false, step:0, long:0, lat:0, vitality:0}
 				db.collection("hungry").insertOne(new_hungry, function(err, res) {
 					if (err) throw err;
-					stupid();
+					main_function();
 				});
 			} else {
-				stupid();
+				main_function();
 			}
 		});
 	});
