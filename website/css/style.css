@@ -269,5 +269,17 @@ input:hover {
 	padding-bottom: 30px;
 }
 
+#logo {
+   background-image: url('pair.png');
+   height: 45px;
+   width: 45px;
+}
+
+#logo:hover {
+   background-image: url('pair_blink.png');
+   height: 45px;
+   width: 45px;
+}
+
 
 
