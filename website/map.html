@@ -44,7 +44,8 @@
       var lng = [];
       function myFunction(e) {
               var text;
-              //console.log(e.latLng);
+              console.log(e.latLng.lat);
+              console.log(e.latLng.lng);
               var i = 0;
               var dis = 1000000;
               for(var j = 0; j < markers.length; j++){
