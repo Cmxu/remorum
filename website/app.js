@@ -229,17 +229,17 @@ function filterLocation(data){
     obj.table.push(data);
     var json = JSON.stringify(obj);
 
-    fs.writeFile ("input.json", JSON.stringify(obj), function(err) {
+    fs.writeFile ("input.json", "inputData = ", function(err) {
         if (err) throw err;
         console.log('complete');
         }
     );
-    /*
+    
     fs.appendFile('input.json', JSON.stringify(obj), function (err) {
     if (err) throw err;
   console.log('Saved!');
     });
-    */
+    
     
     })
       .catch(function(err) {
