@@ -43,10 +43,10 @@
       var latLng = [];
       function myFunction(e) {
               var text;
-              console.log(e.latLng);
+              //console.log(e.latLng);
               var i;
               for(var j = 0; j < markers.length; j++){
-                if(e.latLng == latLng[i]){
+                if(e.latLng.equals(latLng[i])){
                     var i = j;
                 }
               }
