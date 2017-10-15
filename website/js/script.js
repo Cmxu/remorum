@@ -23,22 +23,23 @@ $(document).ready(function(){
   });
 });
 
+
 function initMap() {
-        var uluru = {lat: 40.7128, lng: -74.0060};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 14,
-          center: uluru
-        });
-        var image = 'http://aaltofimedia1.aalto.fi/midcom-static/org.routamc.positioning/pin-regular.png';
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-          icon: image
-        });
-        var uluru2 = {lat: 40.732045, lng: -73.991795};
-        var marker2 = new google.maps.Marker({
-          position: uluru2,
-          map: map
-        });
+  var uluru = {lat: 40.7128, lng: -74.0060};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: uluru
+  });
+  var image = 'http://aaltofimedia1.aalto.fi/midcom-static/org.routamc.positioning/pin-regular.png';
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map,
+    icon: image
+  });
+  var uluru2 = {lat: 40.732045, lng: -73.991795};
+  var marker2 = new google.maps.Marker({
+    position: uluru2,
+    map: map
+  });
 }
 
