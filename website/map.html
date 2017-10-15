@@ -37,6 +37,7 @@
       var init_zoom = 11;
       var init_lat = 40.682631;
       var init_lng = -73.962450;
+      var markers = [];
       /**TESTING**/
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -97,7 +98,7 @@
                 color = '#008000';
           }
           //console.log(color);
-          var marker = new google.maps.Circle({
+          markers[i] = new google.maps.Circle({
             title: locs[i].vitality,
             label: locs[i].num,
             strokeColor: color,
