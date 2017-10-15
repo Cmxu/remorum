@@ -38,9 +38,11 @@
       var init_lat = 40.682631;
       var init_lng = -73.962450;
       var markers = [];
-      function myFunction(marker) {
+      var titles = [];
+      var labels = [];
+      function myFunction(i) {
               var text;
-              switch(marker.title){
+              switch(titles[i]){
                 case -1:
                   text = "This is a homeless shelter. Are you sure you want to deliver here?";
                   break;
@@ -59,7 +61,7 @@
               console.log(text);
               var test = confirm(text);
               if(test){
-                sendFound(marker.label);
+                sendFound(labels[i]);
               }
 
             }
@@ -123,6 +125,8 @@
                 color = '#008000';
           }
           //console.log(color);
+          titles[i] = locs[i].vitality;
+          labels[i] = locs[i].num;
           markers[i] = new google.maps.Circle({
             title: locs[i].vitality,
             label: locs[i].num,
@@ -143,7 +147,7 @@
             map: map
           });*/
           markers[i].addListener('click', function() {
-            myFunction(markers[i]);
+            myFunction(i);
           });
           /*var marker = new google.maps.Marker({
             position: latLng,
