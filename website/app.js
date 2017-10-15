@@ -39,7 +39,7 @@ app.get('/map', (request, response) => {
           }
         }
         results += "]";
-        //console.log(results);
+        console.log(results);
         data_t = dataspl[0] + "var locs = " + results + ";" + dataspl[1];
         //console.log(result);
         //console.log(data_t);

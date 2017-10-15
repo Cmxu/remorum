@@ -8,7 +8,7 @@ var test = JSON.parse(content);
 MongoClient.connect(mongourl, function(err, db) {
     if (err) throw err;
 	for(var i = 0; i < 5; i++){
-		var new_hungry = {'_id': 'homeless' + i, finished:true, step:0, long:test.data[i][14], lat:test.data[i][13], vitality:-1}
+		var new_hungry = {'_id': 'homeless' + i + '', finished:true, step:0, long:test.data[i][14], lat:test.data[i][13], vitality:-1}
 		db.collection("hungry").insertOne(new_hungry, function(err, res) {
             if (err) throw err;
         });
