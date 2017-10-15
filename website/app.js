@@ -211,16 +211,11 @@ app.post('/feeder', function(req, res){
 });
 
 function filterLocation(data){
-    
     fs.writeFile ("input.json", "data = " + JSON.stringify(data), function(err) {
         if (err) throw err;
         console.log('complete');
         }
     );
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
 
 }
 
