@@ -3,24 +3,39 @@
   <head>
     <title>Styled Maps - Night Mode</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+      <link rel= "stylesheet" type= "text/css" href= "css/bootstrap.css">
     <meta charset="utf-8">
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
         height: 100%;
+        position: relative;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
         margin: 0;
         padding: 0;
+
+      }
+
+      #label{
+        width: 100%;
+        height: 5%;
+        position: absolute;
+        background: rgba(0,0,0,0.5);
+        color:white;
+        text-align: center;
+        font-size: 16pt;
+        top: 0;
+        left: 0;
       }
     </style>
   </head>
   <body>
-    <h2> This is test</h2>
     <div id="map"></div>
+    <div id="label">Please select a location which you would like to donate your food.</div>
     <script src="input.json" type="text/javascript"></script>
     <script>
       function sendFound(num1){
@@ -174,7 +189,15 @@
             map: map
           });*/
         }
-      }
+        var mapLabel = new MapLabel({
+           text: 'asdkasdkdjs',
+           position: new google.maps.LatLng(40.682631,-73.962450),
+           map: map,
+           fontSize: 100,
+           align: 'right'
+         });
+        
+      }//init
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtFk_7WVKLkuxSKuMex7sxFans67imYx0&callback=initMap"
     async defer></script>
