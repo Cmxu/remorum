@@ -44,10 +44,12 @@
       function myFunction(e) {
               var text;
               //console.log(e.latLng);
-              var i;
+              var i = 0;
+              var dis = 1000000;
               for(var j = 0; j < markers.length; j++){
-                if(e.latLng.equals(latLng[i])){
-                    var i = j;
+                if(Math.abs(e.latLng.lat - latLng[i].lat) + Math.abs(e.latLng.lng - latLng[i].lng) < dis){
+                  dis = Math.abs(e.latLng.lat - latLng[i].lat) + Math.abs(e.latLng.lng - latLng[i].lng);
+                  var i = j;
                 }
               }
               switch(titles[i]){
