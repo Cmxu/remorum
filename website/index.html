@@ -15,7 +15,7 @@
 	    <div class="container">
 	      <div class="navbar-header">
 	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> <i class="fa fa-bars"></i> </button>
-	        <a class="navbar-brand page-scroll" href="#page-top">Still coming up with it</a> </div>
+	        <a class="navbar-brand page-scroll" href="#page-top">Remora</a> </div>
 	      
 	      <!-- Collect the nav links, forms, and other content for toggling -->
 	      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
@@ -33,9 +33,10 @@
 	<header id="header">
     <div class="intro">
     	<div class="intro-text">
-          <h1>Join Us</h1>
+          <h1>Are you looking for food or giving away food?</h1>
           <br><br>
-          <a class = "page-scroll btn-info btn-lg" href ="#feeder">Feeder</a>
+		  <a id="hungry-button" class = "page-scroll btn-info btn-lg" href ="#feeder">Feeder</a>
+		  &nbsp;&nbsp;
 		  <a class = "page-scroll btn-info btn-lg" href ="#hungry">Hungry</a>
     	</div>
     </div>
@@ -46,7 +47,7 @@
 
 	<div id = "feeder" class = "content-section">
 		<div class="container">
-		  <h2>Feeder</h2>
+		  <h2>Thank you for sharing your food!</h2>
 		  <form action="/feeder" method = "post">
 		  	<fieldset>
 			    <div class="form-group">
@@ -72,15 +73,12 @@
 	</div>
 
 	<div class = "fixed-size">
-		<svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
-	    	<path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0" style="stroke: none; fill:#e3e6ea;"></path>
-	  	</svg>
   	</div>
 
 	<div id = "hungry" class = "content-section">
 		<div id="wrapper">
-			<div class="container">
-			  <h2>Hungry</h2>
+			<div class="container" id="hungry-colors">
+			  <h2>Hungry? Let us know where you are!</h2>
 			  <form action="/hungry" method="post">
 			    <div class="form-group">
 			      <label for="hungry_name">Your Name:</label>
