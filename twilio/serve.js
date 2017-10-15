@@ -6,6 +6,40 @@ const MongoClient = require('mongodb').MongoClient
 
 const mongourl = 'mongodb://localhost:27017/demo';
 const app = express();
+const fs = require('fs');
+const accountSid = 'AC8940746a13337826746a006acd1998cd';
+const authToken = '647002f3e302fd8cef8a000ed18baf97';
+
+app.get('/map', (request, response) => {
+  fs.readFile("map.html", function(err, data){
+    MongoClient.connect(mongourl, function(err, db) {
+      if (err) throw err;
+      db.collection("hungry").find({'finished': true}).toArray(function(err, result) {
+        //console.log(result);
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        datas = data.toString();
+        dataspl = datas.split("/**TESTING**/");
+        //console.log(dataspl[1]);
+
+        results = "[";
+        for(var i = 0; i < result.length; i++){
+          results += "{'long':" + result[i].long + ",'lat':" + result[i].lat + ",'vitality':" + result[i].vitality + ",'num':" + result[i]._id + "}";
+          if(i != result.length -1){
+            results += ",";
+          }
+        }
+        results += "]";
+        //console.log(results);
+        data_t = dataspl[0] + "var locs = " + results + ";" + dataspl[1];
+        //console.log(result);
+        //console.log(data_t);
+        response.write(data_t);
+        response.end();
+        db.close();
+      });
+    });
+  });
+});
 
 MongoClient.connect(mongourl, function(err, db) {
 	if (err) throw err;
@@ -97,6 +131,33 @@ app.post('/sms', (req, res) => {
 			} else {
 				main_function();
 			}
+		});
+	});
+});
+
+app.post('/found', (req, res) => {
+	const mongourl = 'mongodb://localhost:27017/demo';
+	//console.log(req);
+	var inc = req.body.num;
+	const client = require('twilio')(accountSid, authToken);
+	console.log(inc);
+	client.messages
+	  .create({
+	    to: inc,
+	    from: '+13122486437',
+	    body: 'Testing123',
+	  })
+	  .then((message) => console.log(message.sid));
+	MongoClient.connect(mongourl, function(err, db) {
+		if (err) throw err;
+		db.collection("hungry").find({'_id': inc}).toArray(function(err, result) {
+				if (err) throw err;
+				current_person = result[0];
+				current_person.finished = false;
+				db.collection("hungry").updateOne({'_id': inc}, current_person, function(err, result) {
+					if (err) throw err;
+					db.close();
+				});
 		});
 	});
 });
