@@ -1,7 +1,5 @@
 # Remora
 Redistribute your leftover food to the homeless population. 
-<img src="website/thumbnail.png" alt="thumbnail" style="width: 50px;"/>
-
 
 ### Installation
 To install be sure to have the following things installed:
@@ -35,3 +33,5 @@ We learned a new stack, Twilio, Node, Express, and MongoDB.
 
 ### What's next for Remora
 Remora can pair up with local shelters that already provide food for the hungry. We can also create a business integration of Remora where it allows restaurant owners to distribute their leftover food.
+
+<img src="website/thumbnail.png" alt="thumbnail" style="width: 50px;"/>
