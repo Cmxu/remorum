@@ -14,7 +14,7 @@ To install be sure to have the following things installed:
 ### Inspiration
 Excess food is a huge problem in New York City. We wanted to learn how we could redistribute leftover food to those who would benefit from it. This brought us to the large homeless population in the city. We created Remora to directly connect people in New York to those who seek food and help. Ultimately, we hope we can reduce the amount of food that is thrown away every day and connect the people of New York by helping them help each other.
 
-Also, try it at [34.214.100.137:1185](https://34.214.100.137:1185) and at the phone number (312)-248-6437!
+Also, try it at [34.214.100.137:1185](http://34.214.100.137:1185) and at the phone number (312)-248-6437!
 
 ### What it does
 Remora is a service that allows those with food to locate those who need food in the city. Users who have food to give away can access the web app, and quickly register their name, location, and number. They then are taken to a map that displays people nearby who are in need of food. Remora is also a bot that allows those in need of food to sign up through SMS. With their saved numbers, Remora notifies them when someone nearby has food to give. It helps pinpoint a location which both individuals can meet.
